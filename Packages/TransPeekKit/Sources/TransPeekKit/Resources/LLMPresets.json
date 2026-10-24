@@ -1,0 +1,104 @@
+[
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "protocol": "openAICompatible",
+    "baseURL": "https://api.openai.com/v1",
+    "requiresAPIKey": true,
+    "modelsDocURL": "https://developers.openai.com/api/docs/models",
+    "supportsJSONMode": true
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic（Claude）",
+    "protocol": "anthropic",
+    "baseURL": "https://api.anthropic.com",
+    "requiresAPIKey": true,
+    "modelsDocURL": "https://platform.claude.com/docs/en/about-claude/models/overview",
+    "supportsJSONMode": false
+  },
+  {
+    "id": "gemini",
+    "name": "Google Gemini",
+    "protocol": "openAICompatible",
+    "baseURL": "https://generativelanguage.googleapis.com/v1beta/openai",
+    "requiresAPIKey": true,
+    "modelsDocURL": "https://ai.google.dev/gemini-api/docs/models",
+    "supportsJSONMode": true
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "protocol": "openAICompatible",
+    "baseURL": "https://api.deepseek.com",
+    "requiresAPIKey": true,
+    "modelsDocURL": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+    "supportsJSONMode": true,
+    "note": "DeepSeek 默认开启思考模式，延迟较高。可在“额外请求参数”中按 DeepSeek 文档关闭思考模式。"
+  },
+  {
+    "id": "bailian",
+    "name": "阿里云百炼（通义千问）",
+    "protocol": "openAICompatible",
+    "baseURL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "requiresAPIKey": true,
+    "modelsDocURL": "https://help.aliyun.com/zh/model-studio/models",
+    "supportsJSONMode": true
+  },
+  {
+    "id": "moonshot",
+    "name": "Moonshot（Kimi）",
+    "protocol": "openAICompatible",
+    "baseURL": "https://api.moonshot.cn/v1",
+    "requiresAPIKey": true,
+    "modelsDocURL": "https://platform.moonshot.cn/docs/introduction",
+    "supportsJSONMode": true,
+    "note": "默认为中国站地址。国际站（platform.moonshot.ai）创建的 Key 请把 Base URL 改为 https://api.moonshot.ai/v1。"
+  },
+  {
+    "id": "zhipu",
+    "name": "智谱（GLM）",
+    "protocol": "openAICompatible",
+    "baseURL": "https://open.bigmodel.cn/api/paas/v4",
+    "requiresAPIKey": true,
+    "modelsDocURL": "https://docs.bigmodel.cn/cn/guide/start/model-overview",
+    "supportsJSONMode": true
+  },
+  {
+    "id": "openrouter",
+    "name": "OpenRouter",
+    "protocol": "openAICompatible",
+    "baseURL": "https://openrouter.ai/api/v1",
+    "requiresAPIKey": true,
+    "modelsDocURL": "https://openrouter.ai/models",
+    "supportsJSONMode": false
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama（本地）",
+    "protocol": "openAICompatible",
+    "baseURL": "http://localhost:11434/v1",
+    "requiresAPIKey": false,
+    "modelsDocURL": "https://ollama.com/library",
+    "supportsJSONMode": true,
+    "note": "模型 ID 填写本机已下载的模型名（ollama list 中显示的名称）。"
+  },
+  {
+    "id": "lmstudio",
+    "name": "LM Studio（本地）",
+    "protocol": "openAICompatible",
+    "baseURL": "http://localhost:1234/v1",
+    "requiresAPIKey": false,
+    "modelsDocURL": "https://lmstudio.ai/models",
+    "supportsJSONMode": false,
+    "note": "需要先在 LM Studio 的 Developer 页面启动本地服务。"
+  },
+  {
+    "id": "custom",
+    "name": "自定义（OpenAI 兼容）",
+    "protocol": "openAICompatible",
+    "baseURL": "",
+    "requiresAPIKey": false,
+    "supportsJSONMode": false
+  }
+]

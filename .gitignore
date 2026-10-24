@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# XcodeGen 生成的工程（由 project.yml 生成，不提交）
+*.xcodeproj/
+*.xcworkspace/
+
+# 构建产物
+build/
+DerivedData/
+.build/
+.swiftpm/
+xcuserdata/
+*.xcresult
+
+# 含他人信息的真实截图只保存在本地（Fixtures/ocr/README.md）
+pic/
+Packages/TransPeekKit/Tests/TransPeekKitTests/Fixtures/ocr/maple-*/
+# 验证脚本的临时环境
+verify/.venv/
+verify/.build/

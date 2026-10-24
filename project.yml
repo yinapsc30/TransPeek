@@ -1,0 +1,56 @@
+# XcodeGen 配置。生成 Xcode 工程：xcodegen generate
+# 生成的 TransPeek.xcodeproj 不提交到仓库（见 .gitignore）。
+name: TransPeek
+
+options:
+  bundleIdPrefix: com.transpeek
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+
+packages:
+  TransPeekKit:
+    path: Packages/TransPeekKit
+
+targets:
+  TransPeek:
+    type: application
+    platform: macOS
+    sources:
+      - path: App
+    dependencies:
+      - package: TransPeekKit
+    settings:
+      base:
+        PRODUCT_NAME: TransPeek
+        PRODUCT_BUNDLE_IDENTIFIER: com.transpeek.app
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: App/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: App/Resources/TransPeek.entitlements
+        # 不做正式签名和公证，本地构建使用 ad-hoc 签名（design.md「构建与分发」）
+        CODE_SIGN_STYLE: Manual
+        CODE_SIGN_IDENTITY: "-"
+        DEVELOPMENT_TEAM: ""
+        COMBINE_HIDPI_IMAGES: YES
+      configs:
+        # Debug 使用单独的 Bundle ID：与打包版本区分，系统按 Bundle ID 打开应用时不会打开临时签名的 Debug 版，
+        # 两者的屏幕录制权限也分开授权（避免授权记录与签名不一致）。
+        # 钥匙串、预设目录使用固定的 com.transpeek.app，与 Bundle ID 无关，两个版本共用。
+        # Hardened Runtime 只在 Release 开启：它会做库验证，ad-hoc 签名没有 Team ID，
+        # Debug 构建的 TransPeek.debug.dylib 会因此加载失败。
+        # ad-hoc 签名时 Xcode 不会自动加 runtime 选项，所以显式传 --options=runtime。
+        Debug:
+          ENABLE_HARDENED_RUNTIME: NO
+          PRODUCT_BUNDLE_IDENTIFIER: com.transpeek.app.debug
+        Release:
+          ENABLE_HARDENED_RUNTIME: YES
+          OTHER_CODE_SIGN_FLAGS: "--options=runtime"
+    scheme:
+      testTargets: []
